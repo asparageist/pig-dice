@@ -2,11 +2,13 @@ let dice1 = 1;
 let dice2 = 1;
 let score1 = 0;
 let score2 = 0;
+let player = 0;
 
 document.getElementById("roll-button").addEventListener("click", rollDice);
 
-function hideBust() {
+function reset() {
   document.getElementById("bust").setAttribute("class", "hidden");
+  player = 0;
 }
 
 function rollDice() {
@@ -14,6 +16,7 @@ function rollDice() {
   dice2 = Math.floor(Math.random() * 6) + 1;
   displayDice();
   addScore();
+  setPlayer();
 }
 
 function displayDice() {
@@ -26,4 +29,13 @@ function addScore() {
   score2 += dice1 + dice2;
   document.querySelector("span#score1").innerText = score1;
   document.querySelector("span#score2").innerText = score2;
+}
+
+function setPlayer() {
+  if (player === 0) {
+    player += 1;
+  } else {
+    player = 0;
+  }
+  document.querySelector("span#player").innerText = player + 1;
 }
