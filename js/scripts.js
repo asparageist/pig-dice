@@ -50,7 +50,7 @@ function rollDice() {
   dice1 = Math.floor(Math.random() * 6) + 1;
   dice2 = Math.floor(Math.random() * 6) + 1;
   displayDice();
-  busted();
+  isGameOn();
 }
 
 function displayDice() {
@@ -60,7 +60,7 @@ function displayDice() {
 
 function isGameOn() {
   if (score1 < 100 && score2 < 100) {
-    setPlayer();
+    busted();
   } else {
     if (score1 >= 100) {
       document.querySelector("span#score1").innerText = (score1 + " WINNER!");
@@ -97,7 +97,6 @@ function addScore() {
   }
   document.querySelector("span#score1").innerText = score1;
   document.querySelector("span#score2").innerText = score2;
-  isGameOn();
 } 
 
 

@@ -35,3 +35,7 @@ Expected Output: player set to one, scores set to 0
 Test: "it should pass to the other player if Pass is clicked:
 Code: "eventlisten.click Pass"
 Expected Output: player changes from 1 to 2
+
+Test: "it should FIX logic where the game doesn't pass each turn automatically"
+Code: "eventlisten.click Roll"
+Expected Output: Player remains the same unless 1 is rolled
