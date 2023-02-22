@@ -9,5 +9,11 @@ function hideBust() {
 
 function rollDice() {
   dice1 = Math.floor(Math.random() * 6) + 1;
-  console.log(dice1);
+  dice2 = Math.floor(Math.random() * 6) + 1;
+  displayDice();
+}
+
+function displayDice() {
+  document.querySelector("span#dice1").innerText = dice1;
+  document.querySelector("span#dice2").innerText = dice2;
 }
