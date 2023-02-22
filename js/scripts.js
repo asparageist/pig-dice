@@ -19,10 +19,10 @@ window.onload = function() {
 
 function pass() {
   if (player === 0) {
-    score1 = tempScore;
+    score1 += tempScore;
     document.querySelector("span#score1").innerText = score1;
   } else {
-    score2 = tempScore;
+    score2 += tempScore;
     document.querySelector("span#score2").innerText = score2;
   }
   tempScore = 0;
@@ -119,7 +119,6 @@ function addScore() {
   document.querySelector("span#score1").innerText = score1;
   document.querySelector("span#score2").innerText = score2;
 } 
-
 
 function setPlayer() {
   if (player === 0) {
