@@ -27,3 +27,11 @@ Expected Output: "Player 1 Score = 100, Player 1 wins!"
 Test: "it should bust if a 1 is rolled"
 Code: "if dice1 === 1 || dice2 === 1"
 Expected Output: "BUSTED!"
+
+Test: "it should start a new game when New Game is clicked"
+Code: "eventlisten.click New Game"
+Expected Output: player set to one, scores set to 0
+
+Test: "it should pass to the other player if Pass is clicked:
+Code: "eventlisten.click Pass"
+Expected Output: player changes from 1 to 2

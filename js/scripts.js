@@ -7,13 +7,16 @@ let gameOver = false;
 
 document.getElementById("roll-button").addEventListener("click", gameOn);
 document.getElementById("dang").addEventListener("click", dang);
+document.getElementById("reset").addEventListener("click", reset);
 
 window.onload = function() {
   document.getElementById("roll-button").removeAttribute("class", "hidden");
+  document.getElementById("rollem").removeAttribute("class", "hidden");
 }
 
 function gameOn() {
   if (gameOver === false) {
+    document.getElementById("rollem").setAttribute("class", "hidden");
     rollDice();
   } else {
     gameOff();
@@ -24,12 +27,18 @@ function gameOff() {
   gameOver = true;
   document.getElementById("reset").removeAttribute("class", "hidden");
   document.getElementById("roll-button").setAttribute("class", "hidden");
+  document.getElementById("rollem").removeAttribute("class", "hidden");
 }
 
 function reset() {
-  document.getElementById("bust").setAttribute("class", "hidden");
+  document.getElementById("roll-button").removeAttribute("class", "hidden");
   document.getElementById("reset").setAttribute("class", "hidden");
   player = 0;
+  score1 = 0;
+  score2 = 0;
+  document.querySelector("span#score1").innerText = score1;
+  document.querySelector("span#score2").innerText = score2;
+  document.querySelector("span#player").innerText = player + 1;
   gameOver = false;
 }
 
