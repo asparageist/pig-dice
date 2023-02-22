@@ -6,11 +6,13 @@ let player = 0;
 let gameOver = false;
 
 document.getElementById("roll-button").addEventListener("click", gameOn);
+document.getElementById("pass-button").addEventListener("click", setPlayer);
 document.getElementById("dang").addEventListener("click", dang);
 document.getElementById("reset").addEventListener("click", reset);
 
 window.onload = function() {
-  document.getElementById("roll-button").removeAttribute("class", "hidden");
+  document.getElementById("roll-button").removeAttribute("class", "hidden");  
+  document.getElementById("pass-button").removeAttribute("class", "hidden");
   document.getElementById("rollem").removeAttribute("class", "hidden");
 }
 
@@ -27,11 +29,13 @@ function gameOff() {
   gameOver = true;
   document.getElementById("reset").removeAttribute("class", "hidden");
   document.getElementById("roll-button").setAttribute("class", "hidden");
+  document.getElementById("pass-button").setAttribute("class", "hidden");
   document.getElementById("rollem").removeAttribute("class", "hidden");
 }
 
 function reset() {
   document.getElementById("roll-button").removeAttribute("class", "hidden");
+  document.getElementById("pass-button").removeAttribute("class", "hidden");
   document.getElementById("reset").setAttribute("class", "hidden");
   player = 0;
   score1 = 0;
@@ -72,6 +76,7 @@ function busted() {
   if (dice1 === 1 || dice2 === 1) {
     document.getElementById("bust").removeAttribute("class", "hidden");
     document.getElementById("roll-button").setAttribute("class", "hidden");
+    document.getElementById("pass-button").setAttribute("class", "hidden");
   } else {
     addScore();
   }
@@ -80,6 +85,7 @@ function busted() {
 function dang() {
   document.getElementById("bust").setAttribute("class", "hidden");
   document.getElementById("roll-button").removeAttribute("class", "hidden");
+  document.getElementById("pass-button").removeAttribute("class", "hidden");
   setPlayer();
 }
 
