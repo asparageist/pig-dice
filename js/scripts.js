@@ -6,6 +6,7 @@ let player = 0;
 let gameOver = false;
 
 document.getElementById("roll-button").addEventListener("click", gameOn);
+document.getElementById("dang").addEventListener("click", dang);
 
 window.onload = function() {
   document.getElementById("roll-button").removeAttribute("class", "hidden");
@@ -36,7 +37,7 @@ function rollDice() {
   dice1 = Math.floor(Math.random() * 6) + 1;
   dice2 = Math.floor(Math.random() * 6) + 1;
   displayDice();
-  addScore();
+  busted();
 }
 
 function displayDice() {
@@ -56,6 +57,21 @@ function isGameOn() {
       gameOff();
     }
   }
+}
+
+function busted() {
+  if (dice1 === 1 || dice2 === 1) {
+    document.getElementById("bust").removeAttribute("class", "hidden");
+    document.getElementById("roll-button").setAttribute("class", "hidden");
+  } else {
+    addScore();
+  }
+}
+
+function dang() {
+  document.getElementById("bust").setAttribute("class", "hidden");
+  document.getElementById("roll-button").removeAttribute("class", "hidden");
+  setPlayer();
 }
 
 function addScore() {

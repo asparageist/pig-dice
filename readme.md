@@ -23,3 +23,7 @@ Expected Output: "Player 1 score = 8"
 Test: "it should end the game if a player reaches 100"
 Code: "if score >= 100, addScore()"
 Expected Output: "Player 1 Score = 100, Player 1 wins!"
+
+Test: "it should bust if a 1 is rolled"
+Code: "if dice1 === 1 || dice2 === 1"
+Expected Output: "BUSTED!"
