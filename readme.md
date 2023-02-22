@@ -39,3 +39,7 @@ Expected Output: player changes from 1 to 2
 Test: "it should FIX logic where the game doesn't pass each turn automatically"
 Code: "eventlisten.click Roll"
 Expected Output: Player remains the same unless 1 is rolled
+
+Test: "it should gather scores until either a pass or a bust occurs"
+Code: "tempScore1 = dice1 + dice2; score1 = tempScore1"
+Expected Output: Player keeps score if passed, loses score if busted

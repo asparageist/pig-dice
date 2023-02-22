@@ -1,12 +1,13 @@
 let dice1 = 1;
 let dice2 = 1;
+let tempScore = 0;
 let score1 = 0;
 let score2 = 0;
 let player = 0;
 let gameOver = false;
 
 document.getElementById("roll-button").addEventListener("click", gameOn);
-document.getElementById("pass-button").addEventListener("click", setPlayer);
+document.getElementById("pass-button").addEventListener("click", pass);
 document.getElementById("dang").addEventListener("click", dang);
 document.getElementById("reset").addEventListener("click", reset);
 
@@ -14,6 +15,19 @@ window.onload = function() {
   document.getElementById("roll-button").removeAttribute("class", "hidden");  
   document.getElementById("pass-button").removeAttribute("class", "hidden");
   document.getElementById("rollem").removeAttribute("class", "hidden");
+}
+
+function pass() {
+  if (player === 0) {
+    score1 = tempScore;
+    document.querySelector("span#score1").innerText = score1;
+  } else {
+    score2 = tempScore;
+    document.querySelector("span#score2").innerText = score2;
+  }
+  tempScore = 0;
+  document.querySelector("span#tempScoreNumber").innerText = 0;
+  setPlayer();
 }
 
 function gameOn() {
@@ -49,6 +63,7 @@ function reset() {
 function rollDice() {
   dice1 = Math.floor(Math.random() * 6) + 1;
   dice2 = Math.floor(Math.random() * 6) + 1;
+  document.getElementById("tempScore").removeAttribute("class", "hidden");
   displayDice();
   isGameOn();
 }
@@ -77,6 +92,8 @@ function busted() {
     document.getElementById("bust").removeAttribute("class", "hidden");
     document.getElementById("roll-button").setAttribute("class", "hidden");
     document.getElementById("pass-button").setAttribute("class", "hidden");
+    document.getElementById("tempScore").setAttribute("class", "hidden");
+    tempScore = 0;
   } else {
     addScore();
   }
@@ -91,9 +108,13 @@ function dang() {
 
 function addScore() {
   if (player === 0) {
-    score1 += dice1 + dice2;
+    tempScore += dice1 + dice2;
+    document.getElementById("tempScore").removeAttribute("class", "hidden");
+    document.querySelector("span#tempScoreNumber").innerText = tempScore;
   } else {
-    score2 += dice1 + dice2;
+    tempScore += dice1 + dice2;
+    document.getElementById("tempScore").removeAttribute("class", "hidden");
+    document.querySelector("span#tempScoreNumber").innerText = tempScore;
   }
   document.querySelector("span#score1").innerText = score1;
   document.querySelector("span#score2").innerText = score2;
@@ -107,4 +128,5 @@ function setPlayer() {
     player = 0;
   }
   document.querySelector("span#player").innerText = player + 1;
+  document.getElementById("rollem").removeAttribute("class", "hidden");
 }
